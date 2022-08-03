@@ -1,16 +1,130 @@
-# Vue 3 + TypeScript + Vite
+<br>
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<p align='center'>
+<a href="https://vitecamp.netlify.app/">Live Demo</a>
+</p>
 
-## Recommended IDE Setup
+<br>
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+<p align='center'>
+<b>English</b> | <a href="https://github.com/nekobc1998923/vitecamp/blob/master/README.zh-CN.md">简体中文</a>
+</p>
 
-## Type Support For `.vue` Imports in TS
+<br>
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+## Features
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+- ⚡️ [Vue 3](https://github.com/vuejs/vue-next), [Vite 2](https://github.com/vitejs/vite) - fast !
+- 💪 [Typescript](https://www.typescriptlang.org/) - of course! necessary
+- 🎉 [Element Plus ready](https://github.com/element-plus/element-plus) - UI Library based on Vue.js 3
+- 🔥 [Axios](https://github.com/axios/axios) - Http Library based on Promise
+- 💡 [Vue Router 4](https://router.vuejs.org/zh/) - The official router for Vue.js
+- 📦 [Components auto importing](https://github.com/antfu/unplugin-vue-components) - Automatically register components on demand without import
+- 📥 [Auto import APIs](https://github.com/antfu/unplugin-auto-import) - Automatically import APIs
+- 🍍 [State Management via Pinia](https://pinia.esm.dev/) - The Vue Store that you will enjoy using
+- 🎨 [Windi CSS](https://github.com/windicss/windicss) - next generation utility-first CSS framework
+- 😃 [icones](https://github.com/antfu/unplugin-icons) - Powerful Icon Library, Use icons from any icon sets
+- 🌍 [I18n ready](./locales) - Want to translate? Yes, you can!
+- 👩‍🎨 [NProgress](https://github.com/rstacruz/nprogress) - Page loading progress feedback
+- 😃 [SVG Support](https://github.com/jpkleemans/vite-svg-loader) - Support the use of SVG images as components
+- 📑 [Markdown Support](https://github.com/antfu/vite-plugin-md) - Markdown as components / components in Markdown
+- 🔑 Complete code style specification and code submission specification
+- ☁️ Deploy on Netlify, zero-config
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+## Pre-packed
+
+### UI Frameworks
+
+- [Windi CSS](https://github.com/windicss/windicss) (On-demand [TailwindCSS](https://tailwindcss.com/)) - lighter and faster, with a bunch of additional features
+  - [Windi CSS Typography](https://windicss.org/plugins/official/typography.html)
+- [Element Plus](https://github.com/element-plus/element-plus) - A powerful Vue.js 3 UI Library
+
+### Icons
+
+- [🔍Icônes](https://icones.netlify.app/) - use icons from any icon sets
+  - [unplugin-icons](https://github.com/antfu/unplugin-icons) - Automatically introduce the icons you need on demand
+
+### Plugins
+
+- [Vue Router 4](https://router.vuejs.org/zh/) - The official router for Vue.js
+- [Pinia](https://pinia.esm.dev) - The Vue Store that you will enjoy using
+- [Axios](https://github.com/axios/axios) - Http Library based on Promise
+- [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) - components auto import
+- [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) - Automatically import APIs
+- [vite-plugin-windicss](https://github.com/antfu/vite-plugin-windicss) - Windi CSS Integration
+- [vite-plugin-md](https://github.com/antfu/vite-plugin-md) - Markdown as components / components in Markdown
+  - [markdown-it-prism](https://github.com/jGleitz/markdown-it-prism) - [Prism](https://prismjs.com/) for syntax highlighting
+  - [prism-theme-vars](https://github.com/antfu/prism-theme-vars) - customizable Prism.js theme using CSS variables
+  - [markdown-it-link-attributes](https://github.com/crookedneighbor/markdown-it-link-attributes) - Uniformly set the hyperlink jump mode in markdown
+- [Vue I18n](https://github.com/intlify/vue-i18n-next) - Internationalization
+  - [vite-plugin-vue-i18n](https://github.com/intlify/vite-plugin-vue-i18n) - Vite plugin for Vue I18n
+- [vite-plugin-fonts](https://github.com/stafyniaksacha/vite-plugin-fonts) - Vite's font loader
+- [VueUse](https://github.com/antfu/vueuse) - Collection of useful composition APIs
+- [vite-svg-loader](https://github.com/jpkleemans/vite-svg-loader) - Support the use of SVG images as components
+
+### Coding Style
+
+- [ESLint](https://eslint.org/) with [Airbnb Style](https://github.com/airbnb/javascript)
+
+### Dev tools
+
+- [TypeScript](https://www.typescriptlang.org/)
+- [Netlify](https://www.netlify.com/) - zero-config deployment
+- [VS Code Extensions](./.vscode/extensions.json)
+  - [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) -Vue 3 IDE support
+  - [Iconify IntelliSense](https://marketplace.visualstudio.com/items?itemName=antfu.iconify) - Icon inline display and autocomplete
+  - [i18n Ally](https://marketplace.visualstudio.com/items?itemName=lokalise.i18n-ally) - All in one i18n support
+  - [Windi CSS Intellisense](https://marketplace.visualstudio.com/items?itemName=voorjaar.windicss-intellisense) - IDE support for Windi CSS
+  - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) - Code quality and rule checking
+  - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) - Focus on code formatting and beautifying code
+  - [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) - Coding style check
+
+## Try it now!
+
+### GitHub Template
+
+[Create a repo from this template on GitHub](https://github.com/nekobc1998923/vitecamp/generate).
+
+### Clone to local
+
+```bash
+git clone https://github.com/nekobc1998923/vitecamp.git my-vitecamp-app
+cd my-vitecamp-app
+npm i
+```
+
+## Checklist
+
+When you use this template, try follow the checklist to update your info properly
+
+- [ ] Change the author name in `LICENSE`
+- [ ] Change the author name in `package.json`
+- [ ] Change the title in `.env`
+- [ ] Change the favicon in `public`
+- [ ] Clean up the `README` and remove routes
+
+And then , you can enjoy coding fun :)
+
+## Usage
+
+### Development
+
+Just run and visit http://localhost:8080
+
+```bash
+npm run dev
+```
+
+### Build
+
+To build the App, run
+
+```bash
+npm run build
+```
+
+And you will see the generated file in `dist` that ready to be served.
+
+## Thanks
+
+This template has some features inspired by [Vitesse](https://github.com/antfu/vitesse) ❤
