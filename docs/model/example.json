@@ -1,0 +1,91 @@
+{
+  "name": "",
+  "code": "",
+  "layout": {
+    "type": "container | tabs | tab",
+    "dict": "row,column",
+    "position": "static",
+    "scale": 1,
+    "style": {},
+    "warp": false,
+    "childrem": []
+  },
+  "panels": [
+    {
+      "type": "grid-panel",
+      "model": {
+        "actions": [],
+        "filter": {},
+        "list": {},
+        "pagination": {}
+      }
+    },
+    {
+      "name": "",
+      "type": "modal",
+      "model": {
+        "body": {},
+        "header": {},
+        "fotter": {}
+      }
+    },
+    {
+      "code": "",
+      "type": "form",
+      "layout": {},
+      "datasource": {},
+      "model": {
+        "fields": [
+          {
+            "code": "",
+            "name": "",
+            "type": "",
+            "default": "",
+            "disabled": false,
+            "rangeset": [],
+            "options": {},
+            "validator": [],
+            "layout": "",
+            "events": [
+              {
+                "event": "code",
+                "condication": [],
+                "command": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "list",
+      "model": {
+        "datasource": {},
+        "columns": [
+          {
+            "code": "",
+            "name": "",
+            "type": "",
+            "default": "",
+            "template": "",
+            "element": {}
+          }
+        ]
+      }
+    },
+    {
+      "type": "button",
+      "events": [
+        {
+          "event": "click",
+          "command": [
+            {
+              "type": "modal",
+              "options": {}
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

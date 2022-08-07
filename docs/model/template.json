@@ -1,0 +1,304 @@
+{
+  "name": "用户列表界面",
+  "code": "user-list",
+  // 界面入口
+  "layout": {
+    // 布局组件类型，可嵌套，后续提供 grid，tab，fixed等类型
+    "type": "container",
+    // 布局方向
+    "dict": "row",
+    // flex布局占比
+    "scale": 1,
+    // 通用样式类型，适用于所有组件包括padding,margin.width,height,background等样式
+    "style": {},
+    "childrem": [
+      {
+        // 简单标题类型
+        "type": "title",
+        "name": "用户列表"
+      },
+      {
+        // 通过template类型引用配置中template中定义的内容，通过code指定模板，也可直接通过自定code引用默认提供全局模板，用以减少重复配置
+        "type": "template",
+        "code": "grid-panel-test"
+      }
+    ]
+  },
+  // 组件模板，通过code进行引用
+  "templates": [
+    {
+      "code": "grid-panel-test",
+      // ？通过template进行组合？
+      "type": "grid-panel",
+      "model": {
+        // 定义数据源，用于数据查询或者初始化数据
+        "datasource": {
+          // 数据源类型，可通过api/缓存/全局状态/其他层级数据源获取或者通过多种方式组合获取
+          // 需要可增加数据的映射/计算等处理
+          "type": "api",
+          "options": {
+            "path": "/list/test",
+            // 查询参数，通过$的方式引用过滤条件
+            "params": "$filter.data"
+          }
+        },
+        // 操作按钮预制位置
+        "actions": [
+          {
+            "type": "button",
+            "model": {
+              "theme": "primary",
+              "icon": "add",
+              "text": "添加",
+              // 通用配置command，使用event指定当前组件的触发事件，action指定触发动画
+              "command": [
+                {
+                  "event": "click",
+                  // 触发动作，modal展示弹窗，confirm展示确认弹窗，view页面内视图切换，page页面切换，api调用接口,command调用其他接口命令
+                  "action": {
+                    "type": "modal",
+                    "model": {
+                      "type": "template",
+                      "code": "grid-panel-test-modal",
+                      "params": {
+                        "title": "编辑用户",
+                        "submit_path": "/api/edit",
+                        "datasource": {
+                          "type": "value",
+                          "value": "$row"
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "button",
+            "model": {
+              "theme": "default",
+              "text": "处理",
+              "command": [
+                {
+                  "event": "click",
+                  "action": {
+                    "type": "api",
+                    "options": {
+                      "path": "/user/process"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "button",
+            "model": {
+              "theme": "default",
+              "text": "批量处理",
+              // 使用表达式控制按钮的可选状态
+              "enable": "$grid-panel-test.selected",
+              "command": [
+                {
+                  "event": "click",
+                  "action": {
+                    "type": "api",
+                    "options": {
+                      "path": "/user/process",
+                      // 使用表达式将接口参数设置为指定组件的选中数据
+                      "params": "$grid-panel-test.selected"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        // 过滤条件表单定义
+        "filter": {
+          "fields": [
+            {
+              "name": "姓名",
+              "code": "name",
+              "type": "string"
+            },
+            {
+              "name": "年龄",
+              "code": "age",
+              "type": "number"
+            },
+            {
+              "name": "年龄",
+              "code": "gender",
+              "type": "radio",
+              // 引用dict中定义的字典作为选项
+              "rangeset": "$gender"
+            },
+            {
+              "name": "类型",
+              "code": "type",
+              "type": "select",
+              "rangeset": "$user-type"
+            }
+          ]
+        },
+        // 列表组件定义
+        "list": {
+          "columns": [
+            {
+              "name": "姓名",
+              "code": "name",
+              "type": "string"
+            },
+            {
+              "name": "年龄",
+              "code": "age",
+              "type": "number"
+            },
+            {
+              "name": "性别",
+              "code": "gender",
+              "type": "number",
+              "rangeset": "$gender"
+            },
+            {
+              "name": "操作",
+              "code": "opreation",
+              // 自定义类型数据列，可嵌套其他组件
+              "type": "custom",
+              "model": {
+                "children": [
+                  {
+                    "type": "link",
+                    "command": [
+                      {
+                        "event": "click",
+                        "action": "modal",
+                        "model": {
+                          "type": "template",
+                          "code": "grid-panel-test-modal",
+                          "params": {
+                            "title": "编辑用户",
+                            "submit_path": "/api/edit",
+                            "datasource": {
+                              "type": "value",
+                              "value": "$row"
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "options": {
+                      "show": "",
+                      "enable": ""
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        // 分页配置，设置分页大小和分页组件方式和样式
+        "pagination": {
+          "pageSize": 20
+        }
+      }
+    },
+    // 自定义弹窗模板，通过code在其他位置中引用
+    {
+      "code": "grid-panel-test-modal",
+      "type": "modal",
+      "model": {
+        "title": "$params.title",
+        "datasource": "$params.data",
+        "body": [
+          {
+            "code": "form",
+            "type": "form",
+            "model": {
+              "fields": [
+                {
+                  "name": "姓名",
+                  "code": "name",
+                  "type": "string"
+                },
+                {
+                  "name": "年龄",
+                  "code": "age",
+                  "type": "number"
+                },
+                {
+                  "name": "性别",
+                  "code": "gender",
+                  "type": "number"
+                }
+              ]
+            }
+          }
+        ],
+        "command": [
+          {
+            // 表单提交事件，通过底部提交按钮触发
+            "event": "submit",
+            "action": {
+              "type": "api",
+              "options": {
+                "path": "$params.submit_path",
+                "data": "$form"
+              }
+            }
+          },
+          {
+            // 提交成功回调
+            "event": "submit_success",
+            // 通过命令调用列表组件的刷新命令
+            "command": "$grid-panel-test.refresh"
+          }
+        ]
+      }
+    }
+  ],
+  // 定数数据字典
+  "dict": [
+    {
+      "code": "gender",
+      "value": [
+        {
+          "value": 0,
+          "name": "男",
+          // 选项样式，用于列表渲染
+          "render-style": {
+            "color": "blue"
+          }
+        },
+        {
+          "value": 0,
+          "name": "女",
+          "render-style": {
+            "color": "red"
+          }
+        }
+      ]
+    },
+    {
+      "code": "user-type",
+      "value": {
+        "type": "api",
+        "options": {
+          "path": "/user/types",
+          "formater": {
+            "type": "array",
+            // 映射数据字段
+            "mapping": {
+              "name": "type_name",
+              "value": "id"
+            },
+            // 列表数据过滤条件
+            "filter": {}
+          }
+        }
+      }
+    }
+  ]
+}
